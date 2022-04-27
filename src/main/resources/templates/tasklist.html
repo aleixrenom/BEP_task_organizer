@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Tasklist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+	<div class="col-md-4">
+		<h1>Tasks</h1>
+	</div>
+	<div class="col-md-4">
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+    <table class="table table-striped">
+		<tr>
+		    <th>Task</th>
+				<th>Description</th>
+		    <th>Deadline</th>
+		    <th>Category</th>
+		    <th sec:authorize="hasAuthority('ADMIN')"> </th>
+		</tr>  
+    	<tr th:each = "task : ${tasks}">
+    		<td th:text="${task.name}"></td>
+				<td th:text="${task.description}"></td>
+    		<td th:text="${task.deadline}"></td>
+    		<td th:text="${task.category.name}"></td> 		
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.id})}" class="btn btn-xs btn-danger">Delete</a></td>    		
+    	</tr>
+     </table>
+	 <a href="/add" class="btn btn-primary">Add Task</a>
+</div>    	
+</body>
+</html>
