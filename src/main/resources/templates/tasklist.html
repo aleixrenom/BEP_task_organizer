@@ -16,15 +16,10 @@
 <body>
 <div class="container">
 	<div class="row">
-		<!-- <div class="col-md-4"> -->
-		<div class="col">
+		<div class="col-md-6">
 			<h1>Tasks of [[${#httpServletRequest.remoteUser}]]</h1>
 		</div>
-		<!-- <div class="col-md-4">
-			<h3 th:inline="text">Tasks of [[${#httpServletRequest.remoteUser}]]</h3>
-		</div> -->
-		<!-- <div class="col-md-4" style="padding:20px 0"> -->
-		<div class="col text-right" style="padding:20px 0">
+		<div class="col-md-6 text-right" style="padding:20px 0">
 			<form th:action="@{/logout}" method="post">
 				<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
 			</form>
