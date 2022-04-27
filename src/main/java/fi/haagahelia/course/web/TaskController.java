@@ -75,7 +75,9 @@ public class TaskController {
     // Set a task as complete
     @RequestMapping(value = "/complete/{id}", method = RequestMethod.GET)
     public String completeTask(@PathVariable("id") Long taskId, Model model) {
-    	repository.findById(taskId).get().setCompleted(true);
+        Optional<Task> t = repository.findById(taskId);
+    	t.get().setCompleted(true);
+        repository.save(t.get());
         return "redirect:../tasklist";
     }
 }
