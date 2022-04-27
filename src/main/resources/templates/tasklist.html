@@ -27,20 +27,24 @@
 		</form>
 	</div>
     <table class="table table-striped" id="dataTable">
-		<tr>
-		    <th>Task</th>
-				<th>Description</th>
-		    <th>Deadline</th>
-		    <th>Category</th>
-		    <th sec:authorize="hasAuthority('ADMIN')"> </th>
-		</tr>  
-    	<tr th:each = "task : ${tasks}">
-    		<td th:text="${task.name}"></td>
-				<td th:text="${task.description}"></td>
-    		<td th:text="${task.deadline}"></td>
-    		<td th:text="${task.category.name}"></td> 		
- 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.id})}" class="btn btn-xs btn-danger">Delete</a></td>    		
-    	</tr>
+			<thead>
+				<tr>
+						<th>Task</th>
+						<th>Description</th>
+						<th>Deadline</th>
+						<th>Category</th>
+						<th sec:authorize="hasAuthority('ADMIN')"> </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each = "task : ${tasks}">
+					<td th:text="${task.name}"></td>
+					<td th:text="${task.description}"></td>
+					<td th:text="${task.deadline}"></td>
+					<td th:text="${task.category.name}"></td> 		
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.id})}" class="btn btn-xs btn-danger">Delete</a></td>    		
+				</tr>
+			</tbody>
      </table>
 	 <a href="/add" class="btn btn-primary">Add Task</a>
 </div>    	
