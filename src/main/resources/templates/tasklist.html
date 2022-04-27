@@ -33,6 +33,7 @@
 						<th>Description</th>
 						<th>Deadline</th>
 						<th>Category</th>
+						<th>Completed?</th>
 						<th sec:authorize="hasAuthority('ADMIN')"> </th>
 				</tr>
 			</thead>
@@ -41,7 +42,8 @@
 					<td th:text="${task.name}"></td>
 					<td th:text="${task.description}"></td>
 					<td th:text="${task.deadline}"></td>
-					<td th:text="${task.category.name}"></td> 		
+					<td th:text="${task.category.name}"></td>
+					<td th:text="${task.completed}"></td> 		
 				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.id})}" class="btn btn-xs btn-danger">Delete</a></td>    		
 				</tr>
 			</tbody>

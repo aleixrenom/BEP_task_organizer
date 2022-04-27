@@ -17,6 +17,7 @@ public class Task {
     private String name;
     private String description;
     private String deadline;
+		private boolean completed;
     
     @ManyToOne
     @JsonIgnore
@@ -31,6 +32,7 @@ public class Task {
 		this.description = description;
 		this.deadline = deadline;
 		this.category = category;
+		this.completed = false;
 	}
 
 	public Long getId() {
@@ -73,11 +75,19 @@ public class Task {
 		this.category = category;
 	}
 
+	public boolean getCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(Boolean completed) {
+		this.completed = completed;
+	}
+
 	@Override
 	public String toString() {
 		if (this.category != null)
-			return "Task [id=" + id + ", name=" + name + ", description=" + description + ", deadline=" + deadline + " category =" + this.getCategory() + "]";		
+			return "Task [id=" + id + ", name=" + name + ", description=" + description + ", deadline=" + deadline + ", completed=" + completed + " category =" + this.getCategory() + "]";		
 		else
-			return "Task [id=" + id + ", name=" + name + ", description=" + description + ", deadline=" + deadline + "]";
+			return "Task [id=" + id + ", name=" + name + ", description=" + description + ", deadline=" + deadline + ", completed=" + completed + "]";
 	}
 }
