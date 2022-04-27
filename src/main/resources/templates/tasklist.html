@@ -15,18 +15,23 @@
 </head>
 <body>
 <div class="container">
-	<div class="col-md-4">
-		<h1>Tasks</h1>
+	<div class="row">
+		<!-- <div class="col-md-4"> -->
+		<div class="col">
+			<h1>Tasks of [[${#httpServletRequest.remoteUser}]]</h1>
+		</div>
+		<!-- <div class="col-md-4">
+			<h3 th:inline="text">Tasks of [[${#httpServletRequest.remoteUser}]]</h3>
+		</div> -->
+		<!-- <div class="col-md-4" style="padding:20px 0"> -->
+		<div class="col text-right" style="padding:20px 0">
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+			</form>
+		</div>
 	</div>
-	<div class="col-md-4">
-		<h3 th:inline="text">Tasks of [[${#httpServletRequest.remoteUser}]]</h3>
-	</div>
-	<div class="col-md-4" style="padding:20px 0">
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
-		</form>
-	</div>
-    <table class="table table-striped" id="dataTable">
+	<div class="row">
+		<table class="table table-striped col" id="dataTable">
 			<thead>
 				<tr>
 						<th>Task</th>
@@ -45,8 +50,11 @@
 				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.id})}" class="btn btn-xs btn-danger">Delete</a></td>    		
 				</tr>
 			</tbody>
-     </table>
-	 <a href="/add" class="btn btn-primary">Add Task</a>
+		</table>
+	</div>
+	<div class="row">
+		<a href="/add" class="btn btn-primary col">Add Task</a>
+	</div>
 </div>    	
 </body>
 </html>
