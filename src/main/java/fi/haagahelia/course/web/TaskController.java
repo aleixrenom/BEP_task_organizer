@@ -70,5 +70,12 @@ public class TaskController {
     public String deleteTask(@PathVariable("id") Long taskId, Model model) {
     	repository.deleteById(taskId);
         return "redirect:../tasklist";
-    }     
+    }
+
+    // Set a task as complete
+    @RequestMapping(value = "/complete/{id}", method = RequestMethod.GET)
+    public String completeTask(@PathVariable("id") Long taskId, Model model) {
+    	repository.findById(taskId).get().setCompleted(true);
+        return "redirect:../tasklist";
+    }
 }
