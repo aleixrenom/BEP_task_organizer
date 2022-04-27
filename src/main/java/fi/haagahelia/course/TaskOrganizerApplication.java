@@ -26,13 +26,13 @@ public class TaskOrganizerApplication {
 	@Bean
 	public CommandLineRunner taskDemo(TaskRepository trepository, CategoryRepository crepository, UserRepository urepository) {
 		return (args) -> {
-			log.info("save a couple of tasks");
-			crepository.save(new Category("Frontend"));
-			crepository.save(new Category("Backend"));
-			crepository.save(new Category("Softala"));
+			// log.info("save a couple of tasks");
+			// crepository.save(new Category("Frontend"));
+			// crepository.save(new Category("Backend"));
+			// crepository.save(new Category("Softala"));
 			
-			trepository.save(new Task("Final project", "Finish final project", "5.5.22", crepository.findByName("Backend").get(0)));
-			trepository.save(new Task("Complete documentation", "Write necessary documentation", "4.5.22", crepository.findByName("Softala").get(0)));	
+			// trepository.save(new Task("Final project", "Finish final project", "5.5.22", crepository.findByName("Backend").get(0)));
+			// trepository.save(new Task("Complete documentation", "Write necessary documentation", "4.5.22", crepository.findByName("Softala").get(0)));	
 			
 			// Create users: admin/admin user/user
 			// User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
