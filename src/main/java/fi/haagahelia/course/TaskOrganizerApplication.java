@@ -35,10 +35,10 @@ public class TaskOrganizerApplication {
 			trepository.save(new Task("Complete documentation", "Write necessary documentation", "4.5.22", crepository.findByName("Softala").get(0)));	
 			
 			// Create users: admin/admin user/user
-			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
-			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
-			urepository.save(user1);
-			urepository.save(user2);
+			// User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+			// User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+			// urepository.save(user1);
+			// urepository.save(user2);
 			
 			log.info("fetch all tasks");
 			for (Task task : trepository.findAll()) {
