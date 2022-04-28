@@ -25,6 +25,7 @@ public class Task {
     private Category category;
 
 		@ManyToOne
+		@JsonIgnore
     @JoinColumn(name = "id")
 		private User user;
 
