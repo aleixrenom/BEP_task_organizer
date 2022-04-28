@@ -27,9 +27,9 @@ public class TaskOrganizerApplication {
 	public CommandLineRunner taskDemo(TaskRepository trepository, CategoryRepository crepository, UserRepository urepository) {
 		return (args) -> {
 			// log.info("save a couple of tasks");
-			// crepository.save(new Category("Frontend"));
-			// crepository.save(new Category("Backend"));
-			// crepository.save(new Category("Softala"));
+			crepository.save(new Category("Frontend"));
+			crepository.save(new Category("Backend"));
+			crepository.save(new Category("Softala"));
 						
 			// Create users: admin/admin user/user
 			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
