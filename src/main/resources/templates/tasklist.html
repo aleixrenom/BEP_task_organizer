@@ -45,8 +45,8 @@
 					<td th:text="${task.description}"></td>
 					<td th:text="${task.deadline}"></td>
 					<td th:text="${task.category.name}"></td>
-					<td><a th:href="@{/complete/{id}(id=${task.id})}" class="btn btn-xs btn-success">Complete</a></td>
-					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.id})}" class="btn btn-xs btn-danger">Delete</a></td>    		
+					<td><a th:href="@{/complete/{id}(id=${task.taskid})}" class="btn btn-xs btn-success">Complete</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.taskid})}" class="btn btn-xs btn-danger">Delete</a></td>    		
 				</tr>
 			</tbody>
 		</table>
@@ -75,8 +75,8 @@
 					<td th:text="${task.description}"></td>
 					<td th:text="${task.deadline}"></td>
 					<td th:text="${task.category.name}"></td>
-					<td><a th:href="@{/uncomplete/{id}(id=${task.id})}" class="btn btn-xs btn-warning">Uncomplete</a></td>
-					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.id})}" class="btn btn-xs btn-danger">Delete</a></td>    		
+					<td><a th:href="@{/uncomplete/{id}(id=${task.taskid})}" class="btn btn-xs btn-warning">Uncomplete</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.taskid})}" class="btn btn-xs btn-danger">Delete</a></td>    		
 				</tr>
 			</tbody>
 		</table>
