@@ -16,13 +16,17 @@ public class Task {
     private Long id;
     private String name;
     private String description;
-    private String deadline;
+    private String deadline; // localDate would be the type, but better not try this time
 		private boolean completed;
     
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "categoryid")
     private Category category;
+
+		@ManyToOne
+    @JoinColumn(name = "id")
+		private User user;
 
     public Task() {}
 
@@ -81,6 +85,14 @@ public class Task {
 
 	public void setCompleted(Boolean completed) {
 		this.completed = completed;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

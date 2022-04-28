@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import fi.haagahelia.course.domain.CategoryRepository;
 import fi.haagahelia.course.domain.Task;
 import fi.haagahelia.course.domain.TaskRepository;
+import fi.haagahelia.course.domain.User;
+import fi.haagahelia.course.domain.UserRepository;
 
 @Controller
 public class TaskController {
@@ -23,19 +27,36 @@ public class TaskController {
 
 	@Autowired
 	private CategoryRepository crepository; 
+
+    @Autowired
+	private UserRepository urepository;
 	
 	// Show all tasks
     @RequestMapping(value="/login")
     public String login() {	
         return "login";
-    }	
+    }
+
+    // Show all tasks of a user
+	@RequestMapping(value={"/", "/tasklist"})
+	public String userTasksList(Model model) {
+		
+        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = user.getUsername();
+        User userNow = urepository.findByUsername(username);
+		System.out.println("USER FIND START");
+		System.out.println(user);
+		System.out.println("USER FIND END");
+		model.addAttribute("tasks", repository.findByUser(userNow));
+		return "tasklist";
+	}
 	
 	// Show all tasks
-    @RequestMapping(value="/tasklist")
-    public String taskList(Model model) {	
-        model.addAttribute("tasks", repository.findAll());
-        return "tasklist";
-    }
+    // @RequestMapping(value="/tasklist")
+    // public String taskList(Model model) {	
+    //     model.addAttribute("tasks", repository.findAll());
+    //     return "tasklist";
+    // }
   
 	// RESTful service to get all tasks
     @RequestMapping(value="/tasks")

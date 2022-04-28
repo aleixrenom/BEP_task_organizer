@@ -1,5 +1,5 @@
 package fi.haagahelia.course.domain;
-
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -20,6 +20,9 @@ public class User {
 
     @Column(name = "role", nullable = false)
     private String role;
+
+		@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+		private List<Task> userTasks;
     
     public User() {
     }
@@ -61,6 +64,14 @@ public class User {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public List<Task> getUserTasks() {
+		return userTasks;
+	}
+
+	public void setUserTasks(List<Task> userTasks) {
+		this.userTasks = userTasks;
 	}
 
 }
