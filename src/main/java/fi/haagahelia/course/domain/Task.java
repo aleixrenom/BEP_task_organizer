@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Task {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    private Long taskid;
     private String name;
     private String description;
     private String deadline; // localDate would be the type, but better not try this time
@@ -40,12 +40,12 @@ public class Task {
 		this.user = user;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getTaskId() {
+		return taskid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setTaskId(Long taskid) {
+		this.taskid = taskid;
 	}
 
 	public String getName() {
@@ -99,8 +99,8 @@ public class Task {
 	@Override
 	public String toString() {
 		if (this.category != null)
-			return "Task [id=" + id + ", name=" + name + ", description=" + description + ", deadline=" + deadline + ", completed=" + completed + " category =" + this.getCategory() + "]";		
+			return "Task [taskid=" + taskid + ", name=" + name + ", description=" + description + ", deadline=" + deadline + ", completed=" + completed + " category =" + this.getCategory() + "]";		
 		else
-			return "Task [id=" + id + ", name=" + name + ", description=" + description + ", deadline=" + deadline + ", completed=" + completed + "]";
+			return "Task [taskid=" + taskid + ", name=" + name + ", description=" + description + ", deadline=" + deadline + ", completed=" + completed + "]";
 	}
 }
