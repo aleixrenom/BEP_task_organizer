@@ -26,6 +26,7 @@
 		</div>
 	</div>
 	<div class="row">
+		<!-- Current tasks table -->
 		<table class="table table-striped col" id="dataTable">
 			<thead>
 				<tr>
@@ -53,6 +54,33 @@
 	</div>
 	<div class="row">
 		<a href="/add" class="btn btn-primary col">Add Task</a>
+	</div>
+	<div class="row">
+		<!-- Completed tasks table -->
+		<table class="table table-striped col" id="dataTable">
+			<thead>
+				<tr>
+						<th>Task</th>
+						<th>Description</th>
+						<th>Deadline</th>
+						<th>Category</th>
+						<th>Completed?</th>
+						<th></th>
+						<th sec:authorize="hasAuthority('ADMIN')"> </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each = "task : ${tasks}" th:if="${task.completed == true}">
+					<td th:text="${task.name}"></td>
+					<td th:text="${task.description}"></td>
+					<td th:text="${task.deadline}"></td>
+					<td th:text="${task.category.name}"></td>
+					<td th:text="${task.completed}"></td>
+					<td><a th:href="@{/uncomplete/{id}(id=${task.id})}" class="btn btn-xs btn-warning">Uncomplete</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.id})}" class="btn btn-xs btn-danger">Delete</a></td>    		
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>    	
 </body>

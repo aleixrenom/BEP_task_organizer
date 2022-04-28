@@ -80,4 +80,13 @@ public class TaskController {
         repository.save(t.get());
         return "redirect:../tasklist";
     }
+
+    // Set a task as NOT complete
+    @RequestMapping(value = "/uncomplete/{id}", method = RequestMethod.GET)
+    public String uncompleteTask(@PathVariable("id") Long taskId, Model model) {
+        Optional<Task> t = repository.findById(taskId);
+        t.get().setCompleted(false);
+        repository.save(t.get());
+        return "redirect:../tasklist";
+    }
 }
