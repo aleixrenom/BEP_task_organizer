@@ -81,6 +81,10 @@ public class TaskController {
     // Save new task
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Task task){
+        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = user.getUsername();
+        User userNow = urepository.findByUsername(username);
+        task.setUser(userNow);
         repository.save(task);
         return "redirect:tasklist";
     }    
