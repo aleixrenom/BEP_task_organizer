@@ -30,13 +30,14 @@ public class Task {
 
     public Task() {}
 
-	public Task(String name, String description, String deadline, Category category) {
+	public Task(String name, String description, String deadline, Category category, User user) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.deadline = deadline;
 		this.category = category;
 		this.completed = false;
+		this.user = user;
 	}
 
 	public Long getId() {
